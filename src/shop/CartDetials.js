@@ -24,4 +24,7 @@ export class CartDetials extends Component{
             </div>
         </div>
     }
+    componentDidMount(){
+        console.log(this.props.cart.cart);
+    }
 }

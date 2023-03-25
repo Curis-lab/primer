@@ -23,19 +23,7 @@ export const CartReducer = (storeData, action)=>{
         case ActionTypes.CART_UPDATE:
             newStore.cart = newStore.cart.map(item=>{
                 if(item.product.id === action.payload.product.id){
-                    const diff = action.payload.quantity - item.quantity;
-                    newStore.cartItems += diff;
-                    newStore.cartPrice += (item.product.price *diff);
-                    return action.payload;
-                }else{
-                    return item;
-                }
-            });
-            return newStore
 
-        case ActionTypes.CART_REMOVE:
-            newStore.cart = newStore.cart.map(item=>{
-                if(item.product.id === action.payload.product.id){
                     const diff = action.payload.quantity - item.quantity;
                     newStore.cartItems += diff;
                     newStore.cartPrice += (item.product.price * diff);
@@ -44,6 +32,15 @@ export const CartReducer = (storeData, action)=>{
                     return item;
                 }
             });
+            return newStore
+
+        case ActionTypes.CART_REMOVE:
+            //create new cart
+            let selection = newStore.cart.find(item=>
+                item.product.id = action.payload.id);
+            newStore.cartItems -= selection.quantity;
+            newStore.cartPrice -= selection.quantity * selection.product.price;
+            newStore.cart = newStore.cart.filter(item=> item !== selection);
             return newStore
 
         case ActionTypes.CART_CLEAR:

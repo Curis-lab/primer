@@ -21,5 +21,3 @@ export const removeFromCart = (product) =>({
 export const clearCart =()=>({
     type: ActionTypes.CART_CLEAR
 })
-
-//i have to understand it

@@ -10,5 +10,5 @@ export const shopData = {
         { id: 4, name: "P4", category: "Chess",
            description: "P4 (Chess)", price: 6 },
         { id: 5, name: "P5", category: "Chess",
-           description: "P6 (Chess)", price: 7 },
+           description: "P6 (Chess)", price: 7 }
 ] }

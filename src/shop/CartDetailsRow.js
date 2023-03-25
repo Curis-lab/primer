@@ -13,11 +13,14 @@ export class CartDetialsRows extends Component{
                 <td>${item.quantity * item.product.price}</td>
                 <td>
                     {/* I have to understand how it work */}
-                    <button className="btn btn-sm btn-danger">
+                    <button className="btn btn-sm btn-danger" onClick={()=>this.props.removeFromCart(item.product)}>
                         Remove
                     </button>
                 </td>
             </tr>)}
         </>
+    }
+    componentDidMount(){
+        console.log(this.props.cart);
     }
 }
