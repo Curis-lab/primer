@@ -21,11 +21,12 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps)(
         render(){
             return(<Switch>
                 <Route path="/shop/products/:category?" render={(routerProps)=><Shop {...this.props} {...routerProps} products_file={filterProducts(this.props.user.products, routerProps.match.params.category)}/>}></Route>
-                <Route path="/shop/cart" render={(routeProps)=><CartDetials {...this.props.cart} {...routeProps}/>}/>
+                <Route path="/shop/cart" render={(routeProps)=><CartDetials {...this.props} {...routeProps}/>}/>
                 <Redirect to="/shop/products"/>
             </Switch>)
         }       
         componentDidMount(){
+            console.log(this.props.user);
             this.props.Action(dataTypes.CATEGORIES);
             this.props.Action(dataTypes.PRODUCTS);
         }

@@ -34,8 +34,18 @@ export const CartReducer = (storeData, action)=>{
             return newStore
 
         case ActionTypes.CART_REMOVE:
+            newStore.cart = newStore.cart.map(item=>{
+                if(item.product.id === action.payload.product.id){
+                    const diff = action.payload.quantity - item.quantity;
+                    newStore.cartItems += diff;
+                    newStore.cartPrice += (item.product.price * diff);
+                    return action.payload;
+                }else{
+                    return item;
+                }
+            });
+            return newStore
 
-            return action.payload
         case ActionTypes.CART_CLEAR:
             return {...storeData, cart:[], cartItems: 0, cartPrice: 0}    
         default:

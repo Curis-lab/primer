@@ -3,8 +3,10 @@ import { ActionTypes } from "./Types"
 export const ShopReducer = (storeData, action) =>{
     switch(action.type){
         case ActionTypes.DATA_LOAD:
-            return action.payload.data_flow;
+            return {
+                ...storeData,
+                [action.payload.data_type]:action.payload.data_flow};
         default:
-            return 'finder';
+            return storeData || {};
     }
 }

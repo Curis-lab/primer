@@ -4,7 +4,7 @@ import { ActionTypes } from './Types';
 export const Action = (dataType) =>({
     type:ActionTypes.DATA_LOAD,
     payload:{
-      datatype_main: dataType,
+      data_type: dataType,
       data_flow: phData[dataType]
     }
   })

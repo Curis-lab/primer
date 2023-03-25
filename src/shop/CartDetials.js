@@ -16,7 +16,7 @@ export class CartDetials extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                    <CartDetialsRows cart={this.props.cart}/>
+                    <CartDetialsRows {...this.props} cart={this.props.cart.cart}/>
                 </tbody>
             </table>
             <div className="text-center">
