@@ -20,7 +20,4 @@ export class CartDetialsRows extends Component{
             </tr>)}
         </>
     }
-    componentDidMount(){
-        console.log(this.props.cart);
-    }
 }
