@@ -1,23 +1,49 @@
 var {buildSchema} = require("graphql");
-var {importSchema} = require("graphql-import");
 var express = require("express");
 var graphqlHTTP = require("express-graphql");
-var cors = require("cors");
-var schema = importSchema("./src/graphql/schema.graphql");
-var resolvers = require("./src/graphql/resolvers");
-
 var app = express();
 
-app.use(cors);
+let data = [];
 
 app.use("/graphql", graphqlHTTP({
     schema: buildSchema(`
+
+        type product{
+            id:ID!
+            name: String!
+            category: String!
+            price: Float!
+        }
+
+        type suppliers{
+            id: ID!
+            name: String!
+            city: String!
+            products: [ID]
+        }
+        
+        type RootQuery{
+            events: [String!]!    
+        }
+
+        type RootMutation{
+            createEvent(name: String): String
+        }
+
         schema{
-            query:
-            mutation:
+            query: RootQuery
+            mutation: RootMutation
         }
     `),
-    rootValue: null,
+    rootValue: {
+        events: ()=>{
+            return ["foundei","fiioerh","oouer"]
+        },
+        createEvent:(args)=>{
+            const eventName = args.name;
+            return eventName;  
+        }
+    },
     graphiql: true
 }));
 
