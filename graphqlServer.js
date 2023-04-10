@@ -11,7 +11,12 @@ var app = express();
 app.use(cors);
 
 app.use("/graphql", graphqlHTTP({
-    schema: null,
+    schema: buildSchema(`
+        schema{
+            query:
+            mutation:
+        }
+    `),
     rootValue: null,
     graphiql: true
 }));
