@@ -1,15 +1,13 @@
 // import {shopData as phData} from './placeholderData';
 import { ActionTypes } from './Types';
-import { RestDataSource } from './RestDataSource';
+import { shopData as sh } from './placeholderData';
 
 
-const dataSource = new RestDataSource();
 
 export const Action = (dataType) =>({
     type:ActionTypes.DATA_LOAD,
     payload:{
       data_type: dataType,
-      data_flow: dataSource.GetData(dataType)
-      .then(response =>({dataType, data: response.data}))  
+      data_flow: sh[dataType] 
     }
   })

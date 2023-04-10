@@ -26,7 +26,7 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps)(
             </Switch>)
         }       
         componentDidMount(){
-            console.log(this.props.user);
+            console.log('shop connector',this.props.user);
             this.props.Action(dataTypes.CATEGORIES);
             this.props.Action(dataTypes.PRODUCTS);
         }
