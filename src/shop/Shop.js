@@ -12,7 +12,7 @@ export class Shop extends Component{
                     <CartSummary {...this.props.cart}/>
                 </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
                 <div className="col-3 p-2">
                     <CategoryNavigation
                      baseUrl = "/shop/products"
@@ -21,7 +21,10 @@ export class Shop extends Component{
                 <div className="col-9 p-2">
                     <ProductList addCart={this.props.addToCart} prot={this.props.products_file}/>
                 </div>
-            </div>
+            </div> */}
         </div>
+    }
+    componentDidMount(){
+        console.log('this is from shop',this.props);
     }
 }
